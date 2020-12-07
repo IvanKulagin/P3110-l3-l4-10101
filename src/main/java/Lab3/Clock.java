@@ -6,7 +6,7 @@ class Clock implements Time {
     Clock(int h, int m) {
         this.h = h;
         this.m = m;
-        System.out.println("Установлено время на часах " + h + " часов " + m + " минут");
+        System.out.println("Установлено время на часах " + h + ":" + m);
     }
 
     @Override
