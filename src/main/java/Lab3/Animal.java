@@ -17,7 +17,7 @@ abstract class Animal implements Move, Snow {
     @Override
     public void setLocation(Location l) {
         this.l = l;
-        System.out.println(name + " перемещён в локацию " + l);
+        System.out.println(name + " перемещён в локацию " + l.getName());
     }
 
     @Override

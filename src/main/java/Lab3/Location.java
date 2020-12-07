@@ -6,6 +6,7 @@ public enum Location implements Weather {
     private String name;
 
     Location(String name, boolean isWindy, boolean isSnowy) {
+        this.name = name;
         this.isWindy = isWindy;
         this.isSnowy = isSnowy;
         System.out.print("В локации " + name);
@@ -31,9 +32,9 @@ public enum Location implements Weather {
         this.isWindy = isWindy;
         System.out.print("В локации " + name);
         if (isWindy) {
-            System.out.println("Ветер поднялся");
+            System.out.println(" поднялся ветер");
         } else {
-            System.out.println("Ветер стих");
+            System.out.println(" стих ветер");
         }
     }
 
