@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 interface Move {
     void setLocation(Location l);
 
@@ -8,17 +10,18 @@ interface Time {
     void add(int m);
 }
 
-interface Snow {
-    void setSnowCover(boolean s);
-    boolean getSnowCover();
+interface UseBuffet {
+    void checkBuffet(Buffet b);
 }
 
-interface Buffet {
-    void checkBuffet();
+interface BodyParts {
+    void addParts(BodyPart ... p);
+
+    ArrayList<BodyPart> getParts();
 }
 
-interface Weather {
-    void setWindActivity(boolean active);
+interface SnowFlakes {
+    void addFlake(SnowFlake f);
 
-    boolean isSnowFalling();
+    ArrayList<SnowFlake> getFlakes();
 }

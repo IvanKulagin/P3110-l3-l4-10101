@@ -1,13 +1,16 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
-abstract class Animal implements Move, Snow {
+abstract public class Animal implements Move, BodyParts {
     private Location l;
     private String name;
-    private boolean isInSnow;
+    private ArrayList<BodyPart> parts;
 
     Animal(String name, Location l) {
         this.name = name;
         this.l = l;
+        parts = new ArrayList<>();
     }
 
     String getName() {
@@ -26,18 +29,13 @@ abstract class Animal implements Move, Snow {
     }
 
     @Override
-    public void setSnowCover(boolean isInSnow) {
-        if (l.isSnowFalling() == true) {
-            this.isInSnow = isInSnow;
-            if (isInSnow) {
-                System.out.println(name + " теперь весь в снегу");
-            }
-        }
+    public void addParts(BodyPart ... p) {
+        parts.addAll(Arrays.asList(p));
     }
 
     @Override
-    public boolean getSnowCover() {
-        return isInSnow;
+    public ArrayList<BodyPart> getParts() {
+        return parts;
     }
 
     @Override
@@ -45,21 +43,16 @@ abstract class Animal implements Move, Snow {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animal animal = (Animal) o;
-        return isInSnow == animal.isInSnow && l == animal.l && Objects.equals(name, animal.name);
+        return l == animal.l && Objects.equals(name, animal.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(l, name, isInSnow);
+        return Objects.hash(l, name);
     }
 
     @Override
     public String toString() {
-        String s = name;
-        if (isInSnow){
-            s += " в снегу и ";
-        }
-        s += " находиться в " + l.name();
-        return s;
+        return name + " находиться в " + l.name();
     }
 }
