@@ -22,6 +22,4 @@ interface BodyParts {
 
 interface SnowFlakes {
     void addFlake(SnowFlake f);
-
-    ArrayList<SnowFlake> getFlakes();
 }

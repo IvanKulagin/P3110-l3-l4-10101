@@ -16,11 +16,6 @@ abstract public class BodyPart implements SnowFlakes{
     }
 
     @Override
-    public ArrayList<SnowFlake> getFlakes() {
-        return snowFlakes;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

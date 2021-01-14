@@ -2,15 +2,28 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Snow {
-    public static void createSnow(int n, ArrayList<Animal> animals) {
+    private static ArrayList<BodyPart> parts;
+
+    public static void createSnow(int n, Animal ... animals) {
         if (!Wind.isWindy()) {
-            ArrayList<BodyPart> parts = new ArrayList<>();
+            parts = new ArrayList<>();
             Random rnd = new Random();
             for (Animal animal : animals) {
-                parts.addAll(animal.getParts());
+                if (animal.getLocation() == Location.OUTDOOR) {
+                    parts.addAll(animal.getParts());
+                }
             }
             for (int i = 0; i < n; i++) {
                 parts.get(rnd.nextInt(parts.size())).addFlake(new SnowFlake());
+            }
+        }
+    }
+
+    public static void getSnow(Animal ... animals){
+        parts = new ArrayList<>();
+        for (Animal animal : animals) {
+            for (BodyPart part : animal.getParts()){
+                System.out.println("У " + animal.getName() + " " + part.toString());
             }
         }
     }
