@@ -1,10 +1,6 @@
-public class Buffet {
-    private Location l;
-    Buffet(Location l){
-        this.l = l;
-    }
+public class Buffet extends Furniture{
 
-    public Location getLocation(){
-        return l;
+    Buffet(Location l) throws FurnitureNotIndoorException {
+        super(l);
     }
 }

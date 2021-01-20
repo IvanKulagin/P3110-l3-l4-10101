@@ -6,11 +6,13 @@ abstract public class Animal implements Move, BodyParts {
     private Location l;
     private String name;
     private ArrayList<BodyPart> parts;
+    private static ArrayList<Animal> animals = new ArrayList<>();
 
     Animal(String name, Location l) {
         this.name = name;
         this.l = l;
         parts = new ArrayList<>();
+        animals.add(this);
     }
 
     String getName() {
@@ -18,9 +20,14 @@ abstract public class Animal implements Move, BodyParts {
     }
 
     @Override
-    public void setLocation(Location l) {
-        this.l = l;
-        System.out.println(name + " перемещён в локацию " + l.getName());
+    public void setLocation(Location l) throws MoveToIndoorException{
+        if (this.l.getType() == LocationType.INDOOR && l.getType() == LocationType.INDOOR){
+            throw new MoveToIndoorException("Нельзя перейти из " + this.l.getName() + " в " + l.getName() + " не пройдя по улице");
+        }
+        else {
+            this.l = l;
+            System.out.println(name + " перемещён в локацию " + l.getName());
+        }
     }
 
     @Override
@@ -36,6 +43,10 @@ abstract public class Animal implements Move, BodyParts {
     @Override
     public ArrayList<BodyPart> getParts() {
         return parts;
+    }
+
+    public static ArrayList<Animal> getAnimals(){
+        return animals;
     }
 
     @Override
@@ -55,4 +66,6 @@ abstract public class Animal implements Move, BodyParts {
     public String toString() {
         return name + " находиться в " + l.name();
     }
+
+
 }

@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 class Clock implements Time {
-    int h, m;
+    private int h, m;
 
     Clock(int h, int m) {
         this.h = h;
@@ -10,12 +10,12 @@ class Clock implements Time {
 
     @Override
     public void add(int m) {
-        this.m += m;
-        if (m >= 60){
-            h += m / 60;
-            this.m = this.m % 60;
-        }
         System.out.println("Прошло " + m + " минут");
+    }
+
+    @Override
+    public String getTime() {
+        return "На часах " + h + ":" + m;
     }
 
     @Override
@@ -33,6 +33,6 @@ class Clock implements Time {
 
     @Override
     public String toString() {
-        return "На часах " + h + ":" + m;
+        return h + ":" + m;
     }
 }
